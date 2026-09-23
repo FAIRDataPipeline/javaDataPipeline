@@ -40,17 +40,23 @@ public class RegistryKey_value extends Registry_Updateable {
     return this.object;
   }
 
-  /** @param key Meta-data name */
+  /**
+   * @param key Meta-data name
+   */
   public void setKey(String key) {
     this.key = key;
   }
 
-  /** @param value Meta-data value */
+  /**
+   * @param value Meta-data value
+   */
   public void setValue(String value) {
     this.value = value;
   }
 
-  /** @param object APIURL of the associated Object. */
+  /**
+   * @param object APIURL of the associated Object.
+   */
   public void setObject(APIURL object) {
     this.object = object;
   }

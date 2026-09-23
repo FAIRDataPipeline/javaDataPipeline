@@ -63,7 +63,9 @@ public class RegistryFile_type extends Registry_Updateable {
     this.name = name;
   }
 
-  /** @param extension Filename extension. (like csv) */
+  /**
+   * @param extension Filename extension. (like csv)
+   */
   public void setExtension(String extension) {
     this.extension = extension;
   }

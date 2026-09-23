@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.samePropertyValuesAs;
 
 import jakarta.ws.rs.core.MediaType;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -182,7 +182,7 @@ class restClientTest {
     al.add(dp);
     RegistryExternal_object eo = new RegistryExternal_object();
     eo.setDescription("My test external object");
-    eo.setIdentifier(new URL("http://www.bbc.co.uk/"));
+    eo.setIdentifier(URI.create("http://www.bbc.co.uk/").toURL());
     eo.setRelease_date(LocalDateTime.of(2021, 4, 4, 4, 4, 4, 4));
     eo.setTitle("Initial External Object");
     eo.setData_product(lc.makeAPIURL(RegistryData_product.class, 1));
@@ -210,7 +210,7 @@ class restClientTest {
     crr.setName("Initial code repo release");
     crr.setObject(lc.makeAPIURL(RegistryObject.class, 1));
     crr.setVersion("1.0.0");
-    crr.setWebsite(new URL("http://github.com/blabla"));
+    crr.setWebsite(URI.create("http://github.com/blabla").toURL());
     al.add(crr);
     RegistryKey_value kv = new RegistryKey_value();
     kv.setObject(lc.makeAPIURL(RegistryObject.class, 1));

@@ -239,8 +239,8 @@ public class Coderun implements AutoCloseable {
     String remote_repo = this.config.run_metadata().remote_repo().orElse("");
     URL remote_repo_url;
     try {
-      remote_repo_url = new URL(remote_repo);
-    } catch (MalformedURLException e) {
+      remote_repo_url = URI.create(remote_repo).toURL();
+    } catch (MalformedURLException | IllegalArgumentException e) {
       throw (new ConfigException(
           "Remote repo must be a valid URL; (" + remote_repo + " isn't)", e));
     }

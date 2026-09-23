@@ -14,7 +14,9 @@ import org.immutables.value.Value.Immutable;
 @JsonDeserialize
 @JsonSerialize
 public interface Estimate extends Component {
-  /** @return Number - the value that is stored in this component */
+  /**
+   * @return Number - the value that is stored in this component
+   */
   @JsonProperty("value")
   Number internalValue();
 

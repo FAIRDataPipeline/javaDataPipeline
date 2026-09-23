@@ -21,7 +21,8 @@ import org.fairdatapipeline.dataregistry.content.Registry_ObjectList;
 import org.fairdatapipeline.dataregistry.content.Registry_RootObject;
 import org.fairdatapipeline.dataregistry.content.Registry_Updateable;
 import org.fairdatapipeline.dataregistry.oauth2token.OAuth2ClientTokenFeature;
-import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.jnh.connector.JavaNetHttpConnectorProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,12 +37,14 @@ public class RestClient {
   private void init(String registry_url, String token) {
     client =
         ClientBuilder.newBuilder()
+            // java.net.http.HttpClient supports PATCH natively; the default HttpURLConnection
+            // connector needs a reflection hack that Java 16+ blocks.
+            .withConfig(new ClientConfig().connectorProvider(new JavaNetHttpConnectorProvider()))
             .register(Registry_RootObjectReader.class)
             .register(Registry_RootObjectWriter.class)
             .register(Registry_ObjectListReader.class)
             .register(JavaUtilCollectionsDeserializers.class)
             .register(new OAuth2ClientTokenFeature(token))
-            .property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true)
             .build();
     wt = client.target(registry_url);
   }
@@ -65,7 +68,10 @@ public class RestClient {
    * @return The first item found, or null if none are found.
    */
   public Registry_RootObject getFirst(Class<? extends Registry_RootObject> c, Map<String, String> m)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     // c = the class contained within the objectlist
     // return the first item found.
@@ -94,7 +100,10 @@ public class RestClient {
   }
 
   void deal_with_jakarta_http_exceptions(Exception e)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     if (e.getClass() == ProcessingException.class
         || e.getClass() == ResponseProcessingException.class) {
@@ -127,7 +136,10 @@ public class RestClient {
    */
   public Registry_ObjectList<Registry_RootObject> getList(
       Class<? extends Registry_RootObject> c, Map<String, String> m)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     // c is the class contained within the ObjectList
     WebTarget wt2 = wt.path(Registry_RootObject.get_django_path(c.getSimpleName()));
@@ -152,7 +164,10 @@ public class RestClient {
    * @return the FDP Object (or null if not found)
    */
   public Registry_RootObject get(Class<? extends Registry_RootObject> c, int i)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     WebTarget wt2 =
         wt.path(Registry_RootObject.get_django_path(c.getSimpleName())).path(Integer.toString(i));
@@ -175,7 +190,10 @@ public class RestClient {
    * @return The Object, or null if not found.
    */
   public Registry_RootObject get(Class<? extends Registry_RootObject> c, APIURL apiurl)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     WebTarget wt2 = client.target(apiurl.toString());
     try {
@@ -197,7 +215,10 @@ public class RestClient {
    * @return the FDP Object we get back from the registry, with its URL set, or null upon error.
    */
   public Registry_Updateable post(Registry_Updateable o)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     WebTarget wt2 = wt.path(o.get_django_path());
     if (o.getUrl() != null) {
@@ -242,7 +263,10 @@ public class RestClient {
    * @return the Object returned from the registry, or null upon error.
    */
   public Registry_Updateable patch(Registry_Updateable o)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     if (!o.allow_method("PATCH")) {
       throw (new IllegalArgumentException(
@@ -290,7 +314,10 @@ public class RestClient {
    * @return the Object returned from the registry, or null upon error.
    */
   public Registry_Updateable put(Registry_Updateable o)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     if (!o.allow_method("PUT")) {
       throw (new IllegalArgumentException(
@@ -336,7 +363,10 @@ public class RestClient {
    * @param i the ID of the FDP Object we're trying to delete
    */
   public void delete(Class<? extends Registry_Updateable> c, int i)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     Registry_Updateable o = (Registry_Updateable) get(c, i);
     delete(o);
@@ -348,7 +378,10 @@ public class RestClient {
    * @param o the Object we are trying to delete
    */
   public void delete(Registry_Updateable o)
-      throws ConnectException, RegistryVersionException, RegistryJSONException, ForbiddenException,
+      throws ConnectException,
+          RegistryVersionException,
+          RegistryJSONException,
+          ForbiddenException,
           RestClientException {
     if (!o.allow_method("DELETE")) {
       throw (new IllegalArgumentException(

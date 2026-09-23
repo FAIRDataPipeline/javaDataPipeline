@@ -51,7 +51,9 @@ public class RegistryAuthor extends Registry_Updateable {
     this.name = name;
   }
 
-  /** @param identifier (optional): Full URL of identifier (e.g. ORCiD or ROR ID) of the Author. */
+  /**
+   * @param identifier (optional): Full URL of identifier (e.g. ORCiD or ROR ID) of the Author.
+   */
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
   }

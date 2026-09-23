@@ -136,7 +136,9 @@ public class RegistryObject extends Registry_Updateable {
     return (this.keywords == null) ? new ArrayList<>() {} : new ArrayList<>(keywords);
   }
 
-  /** @param description (optional): Free text description of the Object. */
+  /**
+   * @param description (optional): Free text description of the Object.
+   */
   public void setDescription(String description) {
     this.description = description;
   }
@@ -149,7 +151,9 @@ public class RegistryObject extends Registry_Updateable {
     this.storage_location = storage_location;
   }
 
-  /** @param authors (optional): List of Author APIURLs associated with this Object. */
+  /**
+   * @param authors (optional): List of Author APIURLs associated with this Object.
+   */
   public void setAuthors(List<APIURL> authors) {
     this.authors = new ArrayList<>(authors);
   }
@@ -161,7 +165,9 @@ public class RegistryObject extends Registry_Updateable {
     this.uuid = uuid;
   }
 
-  /** @param file_type (optional): FileType of this Object. */
+  /**
+   * @param file_type (optional): FileType of this Object.
+   */
   public void setFile_type(APIURL file_type) {
     this.file_type = file_type;
   }

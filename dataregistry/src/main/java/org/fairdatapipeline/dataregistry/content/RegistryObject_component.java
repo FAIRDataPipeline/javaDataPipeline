@@ -104,7 +104,9 @@ public class RegistryObject_component extends Registry_Updateable {
     return (outputs_of == null) ? new ArrayList<>() {} : new ArrayList<>(this.outputs_of);
   }
 
-  /** @param object The APIURL of the Object to associate this ObjectComponent with. */
+  /**
+   * @param object The APIURL of the Object to associate this ObjectComponent with.
+   */
   public void setObject(APIURL object) {
     this.object = object;
   }
@@ -117,12 +119,16 @@ public class RegistryObject_component extends Registry_Updateable {
     this.name = name;
   }
 
-  /** @param description (optional): Free text description of the ObjectComponent. */
+  /**
+   * @param description (optional): Free text description of the ObjectComponent.
+   */
   public void setDescription(String description) {
     this.description = description;
   }
 
-  /** @param whole_object If this ObjectComponent refers to the whole object or not. */
+  /**
+   * @param whole_object If this ObjectComponent refers to the whole object or not.
+   */
   public void setWhole_object(boolean whole_object) {
     this.whole_object = whole_object;
   }

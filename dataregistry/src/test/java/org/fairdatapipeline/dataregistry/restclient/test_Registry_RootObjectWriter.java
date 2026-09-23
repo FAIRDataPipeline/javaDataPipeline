@@ -2,7 +2,7 @@ package org.fairdatapipeline.dataregistry.restclient;
 
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import org.fairdatapipeline.dataregistry.content.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class test_Registry_RootObjectWriter {
     RegistryNamespace ns = new RegistryNamespace();
     ns.setName("name");
     ns.setFull_name("Name Potter");
-    ns.setWebsite(new URL("http://www.nos.nl/"));
+    ns.setWebsite(URI.create("http://www.nos.nl/").toURL());
     Assertions.assertEquals(
         "{\"name\":\"name\",\"full_name\":\"Name Potter\",\"website\":\"http://www.nos.nl/\"}",
         write_json(ns, ns.getClass()));

@@ -34,8 +34,10 @@ public abstract class Data_product implements AutoCloseable {
   Path filePath;
   CleanableFileChannel filechannel;
   Object_component whole_obj_oc;
+
   /** the name given by the user (asked for in the FileApi.get_dp_for_xxx() call) */
   final String givenDataProduct_name;
+
   /**
    * usually the same as the given name, unless the config use section has given an alternative data
    * product name to open.

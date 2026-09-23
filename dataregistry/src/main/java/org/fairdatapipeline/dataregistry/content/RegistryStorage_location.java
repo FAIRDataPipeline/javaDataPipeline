@@ -66,7 +66,9 @@ public class RegistryStorage_location extends Registry_Updateable {
     this.path = path;
   }
 
-  /** @param hash The calculated SHA1 hash of the file, or git hash of the repo. */
+  /**
+   * @param hash The calculated SHA1 hash of the file, or git hash of the repo.
+   */
   public void setHash(String hash) {
     this.hash = hash;
   }
@@ -79,7 +81,9 @@ public class RegistryStorage_location extends Registry_Updateable {
     this.is_public = is_public;
   }
 
-  /** @param storage_root Reference to the StorageRoot to append the path to. */
+  /**
+   * @param storage_root Reference to the StorageRoot to append the path to.
+   */
   public void setStorage_root(APIURL storage_root) {
     this.storage_root = storage_root;
   }

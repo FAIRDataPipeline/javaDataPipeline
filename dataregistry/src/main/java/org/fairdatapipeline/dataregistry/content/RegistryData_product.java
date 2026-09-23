@@ -122,12 +122,16 @@ public class RegistryData_product extends Registry_Updateable {
     this.version = version;
   }
 
-  /** @param object APIURL of the associated Object. */
+  /**
+   * @param object APIURL of the associated Object.
+   */
   public void setObject(APIURL object) {
     this.object = object;
   }
 
-  /** @param namespace API URL of the Namespace of the DataProduct. */
+  /**
+   * @param namespace API URL of the Namespace of the DataProduct.
+   */
   public void setNamespace(APIURL namespace) {
     this.namespace = namespace;
   }

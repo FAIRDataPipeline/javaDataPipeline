@@ -6,3 +6,7 @@ gradle
 build
 
 .idea
+api/bin
+dataregistry/bin
+dataregistry/build
+graphify-out

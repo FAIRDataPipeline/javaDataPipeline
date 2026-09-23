@@ -68,12 +68,16 @@ public class RegistryCode_repo_release extends Registry_Updateable {
     this.version = version;
   }
 
-  /** @param website (optional): URL of the website for this code release, if applicable. */
+  /**
+   * @param website (optional): URL of the website for this code release, if applicable.
+   */
   public void setWebsite(URL website) {
     this.website = website;
   }
 
-  /** @param object APIURL of the associated Object. */
+  /**
+   * @param object APIURL of the associated Object.
+   */
   public void setObject(APIURL object) {
     this.object = object;
   }

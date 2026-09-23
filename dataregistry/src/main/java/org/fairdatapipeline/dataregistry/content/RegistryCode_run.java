@@ -132,12 +132,16 @@ public class RegistryCode_run extends Registry_Updateable {
     return this.ro_crate;
   }
 
-  /** @param run_date Datetime of the CodeRun. */
+  /**
+   * @param run_date Datetime of the CodeRun.
+   */
   public void setRun_date(LocalDateTime run_date) {
     this.run_date = run_date;
   }
 
-  /** @param description (optional): Free text description of the CodeRun. */
+  /**
+   * @param description (optional): Free text description of the CodeRun.
+   */
   public void setDescription(String description) {
     this.description = description;
   }
@@ -166,12 +170,16 @@ public class RegistryCode_run extends Registry_Updateable {
     this.submission_script = submission_script;
   }
 
-  /** @param inputs List of RegistryObject_component that the CodeRun used as inputs. */
+  /**
+   * @param inputs List of RegistryObject_component that the CodeRun used as inputs.
+   */
   public void setInputs(List<APIURL> inputs) {
     this.inputs = (inputs == null) ? null : new ArrayList<>(inputs);
   }
 
-  /** @param outputs List of RegistryObject_component that the CodeRun produced as outputs. */
+  /**
+   * @param outputs List of RegistryObject_component that the CodeRun produced as outputs.
+   */
   public void setOutputs(List<APIURL> outputs) {
     this.outputs = (outputs == null) ? null : new ArrayList<>(outputs);
   }

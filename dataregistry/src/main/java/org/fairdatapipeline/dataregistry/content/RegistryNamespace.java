@@ -52,17 +52,23 @@ public class RegistryNamespace extends Registry_Updateable {
     return this.website;
   }
 
-  /** @param name The Namespace name */
+  /**
+   * @param name The Namespace name
+   */
   public void setName(String name) {
     this.name = name;
   }
 
-  /** @param full_name (optional): The full name of the Namespace. */
+  /**
+   * @param full_name (optional): The full name of the Namespace.
+   */
   public void setFull_name(String full_name) {
     this.full_name = full_name;
   }
 
-  /** @param website (optional): Website URL associated with the Namespace. */
+  /**
+   * @param website (optional): Website URL associated with the Namespace.
+   */
   public void setWebsite(URL website) {
     this.website = website;
   }

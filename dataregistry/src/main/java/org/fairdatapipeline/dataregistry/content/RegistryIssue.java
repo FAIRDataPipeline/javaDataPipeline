@@ -114,7 +114,9 @@ public class RegistryIssue extends Registry_Updateable {
     }
   }
 
-  /** @param uuid UUID of the Issue. If not specified a UUID is generated automatically. */
+  /**
+   * @param uuid UUID of the Issue. If not specified a UUID is generated automatically.
+   */
   public void setUuid(String uuid) {
     this.uuid = uuid;
   }

@@ -82,7 +82,9 @@ public class RegistryStorage_root extends Registry_Updateable {
     return (this.locations == null) ? new ArrayList<>() {} : new ArrayList<>(this.locations);
   }
 
-  /** @param root URI (including protocol) to the root of a StorageLocation. */
+  /**
+   * @param root URI (including protocol) to the root of a StorageLocation.
+   */
   public void setRoot(URI root) {
     this.root = root;
   }

@@ -30,12 +30,16 @@ public class RegistryUser_author extends Registry_Updateable {
     return author;
   }
 
-  /** @param user The API URL of the User to associate with this UserAuthor. */
+  /**
+   * @param user The API URL of the User to associate with this UserAuthor.
+   */
   public void setUser(APIURL user) {
     this.user = user;
   }
 
-  /** @param author The API URL of the Author to associate with this UserAuthor. */
+  /**
+   * @param author The API URL of the Author to associate with this UserAuthor.
+   */
   public void setAuthor(APIURL author) {
     this.author = author;
   }

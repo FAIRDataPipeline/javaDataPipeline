@@ -1,17 +1,18 @@
 plugins {
     id 'java'
-    id "com.diffplug.gradle.spotless" version "4.4.0"
+    id "com.diffplug.spotless" version "8.10.2"
     id "maven-publish"
     id "signing"
     id "jacoco"
 }
 
-group 'org.fairdatapipeline'
-version '1.0.0-rc3'
+group = 'org.fairdatapipeline'
+version = '1.0.0-rc3'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
     withJavadocJar()
     withSourcesJar()
 }
@@ -26,9 +27,10 @@ repositories {
 
 dependencies {
     testImplementation(platform('org.junit:junit-bom:5.8.1'))
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation 'org.mockito:mockito-core:4.3.1'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
     implementation 'org.glassfish.jersey.core:jersey-client:3.0.4'
     implementation 'org.glassfish.jersey.inject:jersey-hk2:3.0.4'
     implementation 'org.glassfish.jersey:jersey-bom:3.0.4'
@@ -46,7 +48,7 @@ dependencies {
 
 spotless {
     java {
-        googleJavaFormat()
+        googleJavaFormat("1.36.1")
     }
 }
 
@@ -60,8 +62,8 @@ test {
 jacocoTestReport {
     dependsOn test
     reports {
-        xml.enabled true
-        html.enabled false
+        xml.required = true
+        html.required = false
     }
 }
 
@@ -113,8 +115,8 @@ publishing {
         maven {
             url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
             credentials {
-                username findProperty('ossrhUsername')
-                password findProperty('ossrhPassword')
+                username = findProperty('ossrhUsername')
+                password = findProperty('ossrhPassword')
             }
         }
     }

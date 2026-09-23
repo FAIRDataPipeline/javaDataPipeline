@@ -44,17 +44,23 @@ public class RegistryKeyword extends Registry_Updateable {
     return this.identifier;
   }
 
-  /** @param object {@link APIURL} of the associated Object. */
+  /**
+   * @param object {@link APIURL} of the associated Object.
+   */
   public void setObject(APIURL object) {
     this.object = object;
   }
 
-  /** @param keyphrase Free text field for the key phrase to associate with the Object. */
+  /**
+   * @param keyphrase Free text field for the key phrase to associate with the Object.
+   */
   public void setKeyphrase(String keyphrase) {
     this.keyphrase = keyphrase;
   }
 
-  /** @param identifier (optional): URL of ontology annotation to associate with this Keyword. */
+  /**
+   * @param identifier (optional): URL of ontology annotation to associate with this Keyword.
+   */
   public void setIdentifier(URL identifier) {
     this.identifier = identifier;
   }

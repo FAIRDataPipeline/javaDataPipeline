@@ -167,22 +167,30 @@ public class RegistryExternal_object extends Registry_Updateable {
     this.primary_not_supplement = primary_not_supplement;
   }
 
-  /** @param release_date Date-time the ExternalObject was released. */
+  /**
+   * @param release_date Date-time the ExternalObject was released.
+   */
   public void setRelease_date(LocalDateTime release_date) {
     this.release_date = release_date;
   }
 
-  /** @param title Title of the ExternalObject. */
+  /**
+   * @param title Title of the ExternalObject.
+   */
   public void setTitle(String title) {
     this.title = title;
   }
 
-  /** @param description (optional): Free text description of the ExternalObject. */
+  /**
+   * @param description (optional): Free text description of the ExternalObject.
+   */
   public void setDescription(String description) {
     this.description = description;
   }
 
-  /** @param data_product API URL of the associated DataProduct. */
+  /**
+   * @param data_product API URL of the associated DataProduct.
+   */
   public void setData_product(APIURL data_product) {
     this.data_product = data_product;
   }

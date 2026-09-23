@@ -21,7 +21,8 @@ import org.fairdatapipeline.dataregistry.content.Registry_ObjectList;
 import org.fairdatapipeline.dataregistry.content.Registry_RootObject;
 import org.fairdatapipeline.dataregistry.content.Registry_Updateable;
 import org.fairdatapipeline.dataregistry.oauth2token.OAuth2ClientTokenFeature;
-import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.jnh.connector.JavaNetHttpConnectorProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,12 +37,14 @@ public class RestClient {
   private void init(String registry_url, String token) {
     client =
         ClientBuilder.newBuilder()
+            // java.net.http.HttpClient supports PATCH natively; the default HttpURLConnection
+            // connector needs a reflection hack that Java 16+ blocks.
+            .withConfig(new ClientConfig().connectorProvider(new JavaNetHttpConnectorProvider()))
             .register(Registry_RootObjectReader.class)
             .register(Registry_RootObjectWriter.class)
             .register(Registry_ObjectListReader.class)
             .register(JavaUtilCollectionsDeserializers.class)
             .register(new OAuth2ClientTokenFeature(token))
-            .property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true)
             .build();
     wt = client.target(registry_url);
   }
